@@ -146,6 +146,8 @@ if [[ $VPN_ENABLED == "yes" ]]; then
 	# required for use in iptables
 	if [[ "${VPN_PROTOCOL}" == "tcp-client" ]]; then
 		export VPN_PROTOCOL_IPTABLES="tcp"
+	else
+		export VPN_PROTOCOL_IPTABLE = "${VPN_PROTOCOL}"
 	fi
 
 	VPN_DEVICE_TYPE=$(cat "${VPN_CONFIG}" | grep -P -o -m 1 '(?<=^dev\s)[^\r\n\d]+' | sed -e 's~^[ \t]*~~;s~[ \t]*$~~')
